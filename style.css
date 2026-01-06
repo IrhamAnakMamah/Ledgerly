@@ -1,0 +1,275 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
+}
+
+.judul {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-container {
+  background-color: #334155;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #475569;
+  background-color: #1e293b;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+  border-color: #3b82f6;
+}
+
+.submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 140px;
+  transition: background 0.3s;
+}
+
+.submit:hover {
+  background-color: #2563eb;
+}
+
+#result-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+.card-transaksi {
+  background-color: #334155;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #94a3b8;
+}
+
+.card-transaksi.pengeluaran {
+  border-left-color: #ef4444;
+}
+
+.card-transaksi.pemasukan {
+  border-left-color: #22c55e;
+}
+
+.info h4 {
+  font-size: 16px;
+  margin-bottom: 4px;
+  text-transform: capitalize;
+}
+
+.info small {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.harga-wrapper {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.nominal {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-delete {
+  background-color: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 5px;
+  text-decoration: underline;
+}
+
+.btn-delete:hover {
+  color: #ffadad;
+}
+
+.summary-box {
+  background-color: #334155;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.summary-item h5 {
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 5px;
+}
+
+.summary-item span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.input-currency-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #1e293b;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  padding-left: 12px;
+  transition: border-color 0.3s;
+}
+
+.input-currency-group:focus-within {
+  border-color: #3b82f6;
+}
+
+.prefix {
+  color: #94a3b8;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.input-currency-group input {
+  border: none;
+  background: transparent;
+  padding: 12px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  outline: none;
+}
+
+.main-content {
+  display: flex;
+  gap: 20px;
+  align-items: stretch; 
+  height: 500px; 
+}
+
+.form-container {
+  flex: 1;
+  background-color: #334155;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  top: 20px;
+}
+
+#result-container {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+.scroll-area {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.scroll-area::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-area::-webkit-scrollbar-track {
+  background: #1e293b; 
+  border-radius: 4px;
+}
+.scroll-area::-webkit-scrollbar-thumb {
+  background: #475569; 
+  border-radius: 4px;
+}
+.scroll-area::-webkit-scrollbar-thumb:hover {
+  background: #64748b; 
+}
+
+.summary-box {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .submit{
+    margin-top:auto;
+  }
+
+  .form-container, #result-container {
+    width: 100%;
+    flex: none;
+  }
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.text-green { color: #22c55e; }
+.text-red { color: #ef4444; }

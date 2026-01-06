@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="judul">Expense Tracker</h1>
+
+      <div class="main-content">
+        <div class="form-container">
+          <div class="form-isi">
+            <div class="form-group">
+              <label for="transaksi">Jenis Transaksi</label>
+              <select id="transaksi">
+                <option value="pengeluaran">Pengeluaran</option>
+                <option value="pemasukan">Pemasukan</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="keterangan">Keterangan</label>
+              <input
+                type="text"
+                id="keterangan"
+                placeholder="Contoh: Makan Siang"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="jumlah">Nominal</label>
+              <div class="input-currency-group">
+                <span class="prefix">Rp</span>
+                <input type="number" id="jumlah" placeholder="0" min="0" />
+              </div>
+            </div>
+
+            <button id="btn-submit" class="submit">Tambah Transaksi</button>
+          </div>
+        </div>
+
+        <div id="result-container"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
