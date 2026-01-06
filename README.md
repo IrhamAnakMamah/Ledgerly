@@ -19,9 +19,9 @@ SpendLog was built to solve a simple problem: recording where money goes. Howeve
 
 In the spirit of honesty and open-source learning, I want to be transparent about how SpendLog was built:
 
-* ** The Logic (100% Me):**
+* **The Logic (100% Me):**
     All the JavaScript logic, including data processing, array manipulation (`map`, `filter`, `reduce`), DOM manipulation, validation, and `localStorage` management, was written by myself. I focused heavily on understanding how data flows in a web application.
-* ** The UI/UX (AI-Assisted):**
+* **The UI/UX (AI-Assisted):**
     To ensure the application looks professional and user-friendly, I utilized AI assistance (Gemini) to help design the CSS architecture (Flexbox layouts, color palette, and responsiveness). This allowed me to focus my learning energy on the JavaScript logic while still producing a polished visual result.
 
 ## Tech Stack
