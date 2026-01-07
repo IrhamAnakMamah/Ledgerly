@@ -226,6 +226,13 @@ input:focus, select:focus {
   padding-right: 5px;
 }
 
+.scroll-area.on-chart{
+  margin-top: 25px;
+  max-height: 150px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
 .scroll-area::-webkit-scrollbar {
   width: 8px;
 }

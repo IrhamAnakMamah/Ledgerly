@@ -1,6 +1,14 @@
+import { createChart } from './chart.js';
+
 const submit = document.getElementById("btn-submit");
 
 submit.addEventListener("click", getData);
+
+function getLocalStorage () {
+  const temp = localStorage.getItem("data");
+  let storedData = JSON.parse(temp) || [];
+  return storedData;
+}
 
 function getData() {
   // Jenis Transaksi
@@ -41,8 +49,7 @@ function getData() {
       tanggal: dateString,
     };
 
-    const temp = localStorage.getItem("data");
-    let storedData = JSON.parse(temp) || [];
+    let storedData = getLocalStorage();
 
     console.log(storedData);
     storedData.push(data);
@@ -64,10 +71,9 @@ function clearInput() {
 }
 
 function deleteData(idDelete) {
-  const temp = localStorage.getItem("data");
-  let getData = JSON.parse(temp);
+  let getData = getLocalStorage();
 
-  data = getData.filter(({ id }) => {
+  const data = getData.filter(({ id }) => {
     return id != idDelete;
   });
 
@@ -78,8 +84,7 @@ function deleteData(idDelete) {
 
 function viewData() {
   const container = document.getElementById("result-container");
-  const temp = localStorage.getItem("data");
-  let data = JSON.parse(temp) || [];
+  let data = getLocalStorage();
 
   if (data.length > 0) {
     const listHtml = data
@@ -141,10 +146,12 @@ function viewData() {
           </div>
       </div>
     `;
-
+    
+    createChart(jumlahPemasukan, jumlahPengeluaran);
     container.innerHTML =
       summaryHtml + `<div class="scroll-area">${listHtml}</div>`;
   } else {
+    createChart(0,0);
     container.innerHTML = `
       <div style="text-align: center; color: #94a3b8; padding: 20px;">
           <h3>Belum ada data transaksi</h3>
@@ -154,3 +161,4 @@ function viewData() {
 }
 
 viewData();
+window.deleteData = deleteData;
