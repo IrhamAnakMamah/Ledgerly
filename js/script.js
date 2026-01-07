@@ -1,14 +1,9 @@
 import { createChart } from './chart.js';
+import { createCardHTML, getLocalStorage } from './utils.js';
 
 const submit = document.getElementById("btn-submit");
 
 submit.addEventListener("click", getData);
-
-function getLocalStorage () {
-  const temp = localStorage.getItem("data");
-  let storedData = JSON.parse(temp) || [];
-  return storedData;
-}
 
 function getData() {
   // Jenis Transaksi
@@ -88,28 +83,8 @@ function viewData() {
 
   if (data.length > 0) {
     const listHtml = data
-      .map(({ id, transaksi, keterangan, jumlah, tanggal }) => {
-        const isExpense = transaksi === "pengeluaran";
-        const cssClass = isExpense ? "pengeluaran" : "pemasukan";
-        const sign = isExpense ? "-" : "+";
-        const formatRupiah = new Intl.NumberFormat("id-ID").format(jumlah);
-        return `
-        <div class="card-transaksi ${cssClass}">
-            <div class="info">
-                <h4>${keterangan}</h4>
-                <small>${transaksi.toUpperCase()} • ${
-          tanggal || "-"
-        }</small> </div>
-            <div class="harga-wrapper">
-                <span class="nominal" style="color: ${
-                  isExpense ? "#ef4444" : "#22c55e"
-                }">
-                    ${sign} Rp ${formatRupiah}
-                </span>
-                <button class="btn-delete" onclick="deleteData(${id})">Hapus</button>
-            </div>
-        </div>
-        `;
+      .map((data) => {
+        return createCardHTML(data, 'information')
       })
       .join("");
 

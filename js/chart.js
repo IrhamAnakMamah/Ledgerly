@@ -1,4 +1,6 @@
-let status = 'pengeluaran';
+import { createCardHTML, getLocalStorage } from "./utils.js";
+
+let status = "pengeluaran";
 
 export function createChart(jumlahPemasukan, jumlahPengeluaran) {
   destroyChart();
@@ -18,11 +20,11 @@ export function createChart(jumlahPemasukan, jumlahPengeluaran) {
     data: data,
   });
 
-  const changeHtml = ((key) => {
-      const listHtml = getElement(key);
-      const ket = document.getElementById('ket-transaksi');
-      ket.innerHTML = `<div class="scroll-area on-chart">${listHtml}</div>`;
-  });
+  const changeHtml = (key) => {
+    const listHtml = getElement(key);
+    const ket = document.getElementById("ket-transaksi");
+    ket.innerHTML = `<div class="scroll-area on-chart">${listHtml}</div>`;
+  };
 
   element.onclick = (evt) => {
     const chart = Chart.getChart(myChart);
@@ -41,7 +43,7 @@ export function createChart(jumlahPemasukan, jumlahPengeluaran) {
       const firstPoint = points[0];
       console.log(firstPoint);
       const oldLabel = chart.data.labels[firstPoint.index];
-      const label = oldLabel.replace("P", "p");
+      const label = oldLabel.toLowerCase();
       status = label;
       console.log(label);
       changeHtml(status);
@@ -52,29 +54,14 @@ export function createChart(jumlahPemasukan, jumlahPengeluaran) {
 }
 
 function getElement(key) {
-  const temp = localStorage.getItem("data");
-  let data = JSON.parse(temp) || [];
+  let data = getLocalStorage();
 
-  const listHtml = data.filter(({transaksi}) => {
-    return transaksi === key;
-  }).map(({ id, transaksi, keterangan, jumlah, tanggal }) => {
-      const isExpense = transaksi === "pengeluaran";
-      const cssClass = isExpense ? "pengeluaran" : "pemasukan";
-      const formatRupiah = new Intl.NumberFormat("id-ID").format(jumlah);
-      return `
-              <div class="card-transaksi ${cssClass}">
-                  <div class="info">
-                      <h4>${keterangan}</h4>
-                      <small>${transaksi.toUpperCase()} • ${
-        tanggal || "-"
-      }</small> </div>
-                  <div class="harga-wrapper">
-                      <span class="nominal" style="color: white">
-                          Rp ${formatRupiah}
-                      </span>
-                  </div>
-              </div>
-              `;
+  const listHtml = data
+    .filter(({ transaksi }) => {
+      return transaksi === key;
+    })
+    .map((data) => {
+      return createCardHTML(data, "chart");
     })
     .join("");
 
